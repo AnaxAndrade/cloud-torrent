@@ -43,8 +43,8 @@ RUN set -ex \
 	&& go get -u github.com/jteeuwen/go-bindata/... \
 	&& go generate ./... \
 	&& go install \
-	&& go build -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags)" -o /usr/local/bin/$NAME \
-	&& apk del .build-deps \
-	&& rm -rf /no-pic.patch $GOPATH /usr/local/go
+	&& go build -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags)" -o /usr/local/bin/$NAME
+#	&& apk del .build-deps \
+#	&& rm -rf /no-pic.patch $GOPATH /usr/local/go
 #run!
 ENTRYPOINT ["cloud-torrent"]
