@@ -44,7 +44,7 @@ RUN set -ex \
 	&& go generate ./... \
 	&& go install \
 	&& go build -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags)" -o /usr/local/bin/$NAME
-#	&& apk del .build-deps \
-#	&& rm -rf /no-pic.patch $GOPATH /usr/local/go
+	&& apk del .build-deps \
+	&& rm -rf /no-pic.patch $GOPATH /usr/local/go
 #run!
 ENTRYPOINT ["cloud-torrent"]
