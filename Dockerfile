@@ -40,6 +40,7 @@ RUN set -ex \
 	&& mkdir -p $PACKAGE_DIR \
 	&& git clone https://$PACKAGE.git $PACKAGE_DIR \
 	&& cd $PACKAGE_DIR \
+	&& go get -u github.com/jteeuwen/go-bindata/... \
 	&& go generate ./... \
 	&& go install \
 	&& go build -ldflags "-X main.VERSION=$(git describe --abbrev=0 --tags)" -o /usr/local/bin/$NAME \
